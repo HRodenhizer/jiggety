@@ -16,6 +16,7 @@ fi
 
 # Prompt user for input: Do you want to update your bash and git aliases and add git branch to CLI
 # Prompt user for input: Do you want to install all software?
+# IF YES, run fileInstallation, or parts of it?
 # store these to variables early, then make decisions for the user as script progresses.
 
 # download and source supporting file, then edit .bashrc PS1 variable to display git branch
@@ -44,12 +45,3 @@ fi
 # append .bash_aliases call to .bashrc
 printf '\n# added by jiggety:\n' >> ~/.bashrc
 printf '%s\n    %s\n%s\n' 'if [ -f ~/.bash_aliases ]; then' 'source ~/.bash_aliases' 'fi' >> ~/.bashrc
-
-# Install MiniConda, QIIME2, Atom, Atom Packages, flake8, git
-# clone common QIIME repos, add relevant git remotes
-# Install R and relevant packages (ggplot2, dplyr, etc)
-# Install firefox, fb-blocker plugin, chrome
-
-# Generate SSH Key, clone all gitHub repos
-
-# Configure printers?
