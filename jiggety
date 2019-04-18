@@ -45,3 +45,13 @@ fi
 # append .bash_aliases call to .bashrc
 printf '\n# added by jiggety:\n' >> ~/.bashrc
 printf '%s\n    %s\n%s\n' 'if [ -f ~/.bash_aliases ]; then' 'source ~/.bash_aliases' 'fi' >> ~/.bashrc
+
+
+# UNCOMMENT THIS ONLY AFTER THIS SCRIPT RUNS fileInstallation
+# This section must follow fileInstallation, so that a .atom dir exists
+# if [ -d ~/.atom ]; then
+#   printf "%s\n" "\"atom-workspace atom-text-editor\": {" \
+#   "    \"ctrl-backspace\": \"editor:delete-to-previous-word-boundary\"," \
+#   "    \"ctrl-delete\": \"editor:delete-to-next-word-boundary\"," \
+#   "}" > ~/.atom/keymap.cson
+# fi
