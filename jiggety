@@ -4,7 +4,7 @@
 # Create src directory
 if [ -d ~/src ]; then
   printf '** WARNING: This system already has a ~/src directory. **\n'
-  printf 'It may have been configured already. Continuing may break stuff. '
+  printf 'Machine may already have been configured. Continuing may break stuff. '
   printf 'Are you sure you want to continue? [y/n]'
   read CONTINUE
   if [ $CONTINUE != 'y' ]; then
@@ -13,35 +13,46 @@ if [ -d ~/src ]; then
 else
   mkdir ~/src
 fi
+# TODO: change behavior to exit script if no, and continue without overwriting ~/src if yes
 
-# Prompt user for input: Do you want to update your bash and git aliases and add git branch to CLI
-# Prompt user for input: Do you want to install all software?
-# IF YES, run fileInstallation, or parts of it?
-# store these to variables early, then make decisions for the user as script progresses.
+printf 'Do you want to update your bash and git aliases and add git branch to CLI? [y/n]'
+read CONFIG
 
-# download and source supporting file, then edit .bashrc PS1 variable to display git branch
-curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
-sed -i '1isource ~/.git-prompt.sh\n' ~/.bashrc
-sed -i 's/($debian_chroot)}/($debian_chroot)}$(__git_ps1 "(%s)")/g' ~/.bashrc
+printf 'Do you want to install all software? [y/n]'
+read INSTALL
 
-# add git aliases to .gitconfig
-cat << EOT >> ~/.gitconfig
-[alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-EOT
-
-## Add aliases to .bashrc
-# TODO Do I need to CHMOD jiggety for security reasons?
-# NOTE: must be non-root
-# create .bash_aliases file and write aliases
-if [ ! -f ~/.bash_aliases ]; then
-  cat ~/src/jiggety/aliases >> ~/.bash_aliases
+if [[ "$CONFIG" = "y" ]]; then
+	# download and source supporting file, then edit .bashrc PS1 variable to display git branch
+	curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+	sed -i '1isource ~/.git-prompt.sh\n' ~/.bashrc
+	sed -i 's/($debian_chroot)}/($debian_chroot)}$(__git_ps1 "(%s)")/g' ~/.bashrc
+	
+	# add git aliases to .gitconfig
+	cat ~/src/jiggety/gitconfig >> ~/.gitconfig 
+	
+	## Add aliases to .bashrc
+	# NOTE: must be non-root
+	# create .bash_aliases file and write aliases
+	if [ ! -f ~/.bash_aliases ]; then
+	  cat ~/src/jiggety/aliases >> ~/.bash_aliases
+	fi
+	
+	# append .bash_aliases call to .bashrc
+	printf '\n# added by jiggety:\n' >> ~/.bashrc
+	printf '%s\n    %s\n%s\n' 'if [ -f ~/.bash_aliases ]; then' 'source ~/.bash_aliases' 'fi' >> ~/.bashrc
 fi
 
-# append .bash_aliases call to .bashrc
-printf '\n# added by jiggety:\n' >> ~/.bashrc
-printf '%s\n    %s\n%s\n' 'if [ -f ~/.bash_aliases ]; then' 'source ~/.bash_aliases' 'fi' >> ~/.bashrc
+if [[ "$INSTALL" == "y" ]]; then
+	
+	printf 'Are you provisioning Mint or openSUSE? (mint/open)?'
+	read DISTRO
+
+	if [[ "$DISTRO" == "mint" ]]; then 
+		bash ~/src/jiggety/fileInstallationMint.sh
+	fi
+
+	if [[ "$DISTRO" == "open" ]]; then
+		bash ~/src/jiggety/fileInstallationSUSE.sh
+	fi
+fi
+
