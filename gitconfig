@@ -1,0 +1,16 @@
+[user]
+	name = Chris Keefe
+	email = crk239@nau.edu
+[core]
+	editor = vim
+[pager]
+	branch = false
+	remote = false
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	rm = remote
+	re = rebase
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

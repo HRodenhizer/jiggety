@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -ex
 # TODO: First startup
 # Configure snapshots in Timeshift - RSYNC
 # remove "Show Desktop" from toolbar
