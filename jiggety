@@ -21,6 +21,10 @@ read CONFIG
 printf 'Do you want to install all software? [y/n]'
 read INSTALL
 
+printf 'Do you want to clone all of your github repos? [y/n] \n'
+printf 'NOTE: You must have a personal access token from github stored to $GHTKN.'
+read SCRAPE_GH
+
 if [[ "$CONFIG" = "y" ]]; then
 	# download and source supporting file, then edit .bashrc PS1 variable to display git branch
 	curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
@@ -56,3 +60,6 @@ if [[ "$INSTALL" == "y" ]]; then
 	fi
 fi
 
+if [[ "$SCRAPE_GH" == "y" ]]; then
+	bash ~/src/jiggety/cloneAll.sh
+fi

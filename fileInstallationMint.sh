@@ -39,6 +39,7 @@ pip install flake8
 apt install crawl-tiles -y
 apt install kpat -y
 apt install kmines -y
+sudo apt install jq -y
 cd ~/Downloads
 wget https://atom.io/download/deb
 dpkg -i deb
