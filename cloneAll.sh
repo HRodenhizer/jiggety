@@ -1,5 +1,7 @@
 #!/bin/sh
+set -x
 
+# TODO: segregate q2 repos into separate subdir
 printf "What is your GH username?"
 read UNAME
 ORG="qiime2"
