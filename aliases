@@ -1,8 +1,9 @@
 # rerun last command as sudo
 alias please='sudo $(fc -ln -1)'
 
-alias ll='ls -AlF'
-alias l='ls -CA'
+alias ll='ls -AlFh'
+alias la='ls -A'
+alias l='ls -CF'
 
 alias .....='cd ../../../..'
 alias ....='cd ../../..'
@@ -69,3 +70,7 @@ alias diskspace="du -S | sort -n -r |more"
 
 # Show me the size (sorted) of only the folders in this directory
 alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
+
+# Add an "alert" alias to notify on completion of long-running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
