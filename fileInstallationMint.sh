@@ -22,18 +22,24 @@ apt-get autoclean -y
 # save point
 timeshift --create --comments "updates/ugrades packages"
 
+# Required dependencies:
+apt install snapd
+apt install jq -y
+apt install xclip -y
+
+# Optional software:
 apt install chromium-browser -y
+apt install neovim -y
 apt install clementine -y
 apt install build-essential -y
 apt install idle-python3.6 -y
 apt install python-pip -y
 pip install flake8
 
-# The following are dependencies of later sub-scripts, so are required:
-apt install jq -y
-apt install xclip -y
+# Install VSCode
+snap install code --classic
 
- 
+#TODO: atom install broken - repair? replace with VSCode? 
 cd ~/Downloads
 wget https://atom.io/download/deb
 dpkg -i deb
@@ -45,6 +51,8 @@ apt install texlive-latex-recommended texlive-latex-base texlive-latex-extra tex
 timeshift --create --comments "bulk software install"
 EOF
 
+# Add Snap packages to PATH
+echo 'export PATH=$PATH:/snap/bin' >> ~/.bashrc
 
 ##Install Oracle 11 JDK - may require user input
 #sudo -s -- <<EOF
