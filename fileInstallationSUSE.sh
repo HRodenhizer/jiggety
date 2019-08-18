@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -e
 PKGMAN="zypper"
 # OpenSUSE on btrfs saves snapshots by default
 sudo $PKGMAN ref

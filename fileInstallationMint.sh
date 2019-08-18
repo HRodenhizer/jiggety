@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -e
 # remove "Show Desktop" from toolbar
 # configure bash to 0 transparency
 # log in to firefox and show bookmarks toolbar, remove pocket, set default search to duckduckgo.

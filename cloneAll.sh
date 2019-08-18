@@ -1,5 +1,5 @@
 #!/bin/sh
-set -x
+set -e
 
 # TODO: segregate q2 repos into separate subdir
 printf "What is your GH username?"
