@@ -2,6 +2,7 @@
 # Configure linuxMint - backups, workspaces, tiling, hot corners, icons on panel
 
 read -p 'Configure Terminal, bash, git, and vim? [y/n] ' CONFIG
+read -p 'Add background images and filter out the bad ones? [y/n]' BGROUND
 read -p 'Install all standard productivity software? [y/n] ' INSTALL
 read -p 'Install Miniconda and QIIME 2? [y/n] ' QIIME
 read -p 'Clone all of your github repos? [y/n] ' SCRAPE_GH
@@ -35,6 +36,10 @@ if [[ "$CONFIG" == "y" ]]; then
 
 	# Write NeoVim config to "nvimrc"
 	cat ~/src/jiggety/dotfiles/init.vim >> ~/.config/nvim/init.vim
+fi
+
+if [[ "$BGROUND" == "y" ]]; then
+	bash ~/src/jiggety/backgroundSlideshow.sh
 fi
 
 if [[ "$INSTALL" == "y" ]]; then

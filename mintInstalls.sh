@@ -26,9 +26,10 @@ apt install jq -y
 apt install xclip -y
 
 # Optional software:
+apt install dconf-editor
+apt install build-essential -y
 apt install chromium-browser -y
 apt install clementine -y
-apt install build-essential -y
 apt install idle-python3.6 -y
 apt install python-pip -y
 pip install flake8
