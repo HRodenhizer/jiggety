@@ -1,14 +1,17 @@
 #!/bin/bash
 # Configure linuxMint - backups, workspaces, tiling, hot corners, icons on panel
 
-read -p 'Do you want to update your bash and git aliases and add git branch to CLI? [y/n] ' CONFIG
-read -p 'Do you want to install all standard productivity software? [y/n] ' INSTALL
-read -p 'Do you want to install Miniconda and QIIME 2? [y/n] ' QIIME
-read -p 'Do you want to clone all of your github repos? [y/n] ' SCRAPE_GH
+read -p 'Configure Terminal, bash, git, and vim? [y/n] ' CONFIG
+read -p 'Add background images and filter out the bad ones? [y/n]' BGROUND
+read -p 'Install all standard productivity software? [y/n] ' INSTALL
+read -p 'Install Miniconda and QIIME 2? [y/n] ' QIIME
+read -p 'Clone all of your github repos? [y/n] ' SCRAPE_GH
 
 if [[ "$CONFIG" == "y" ]]; then
-# TODO: Move all config to separate script and call here
-# TODO: overwrite with fixed dotfiles rather than editing dotfiles (for idempotence)
+# TODO: overwrite .bashrc with dotfile rather than editing dotfile (for idempotence)
+
+	# Overwrite awful Gnome Terminal defaults
+	bash ~/src/jiggety/terminalconfig.sh
 
 	# back up .bashrc
 	cp ~/.bashrc ~/.bashrc_old
@@ -17,33 +20,37 @@ if [[ "$CONFIG" == "y" ]]; then
 	curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
 	sed -i '1isource ~/.git-prompt.sh\n' ~/.bashrc
 
-#	Mint appears to set a git prompt by default now
+#	Mint appears to set a git prompt by default now:
 #	sed -i 's/($debian_chroot)}/($debian_chroot)}$(__git_ps1 "(%s)")/g' ~/.bashrc
 
 	# add git aliases to .gitconfig
-	cat ~/src/jiggety/gitconfig >> ~/.gitconfig
+	cat ~/src/jiggety/dotfiles/gitconfig >> ~/.gitconfig
 
-	## Add aliases to .bashrc
+	# add bash aliases to .bashrc and source them
 	# NOTE: must be non-root
-	# create .bash_aliases file and write aliases
 	if [ ! -f ~/.bash_aliases ]; then
-	  cat ~/src/jiggety/aliases >> ~/.bash_aliases
+	  cat ~/src/jiggety/dotfiles/aliases >> ~/.bash_aliases
 	fi
-
-	# append .bash_aliases call to .bashrc
 	printf '\n# added by jiggety:\n' >> ~/.bashrc
 	printf '%s\n    %s\n%s\n' 'if [ -f ~/.bash_aliases ]; then' 'source ~/.bash_aliases' 'fi' >> ~/.bashrc
+
+	# Write NeoVim config to "nvimrc"
+	cat ~/src/jiggety/dotfiles/init.vim >> ~/.config/nvim/init.vim
+fi
+
+if [[ "$BGROUND" == "y" ]]; then
+	bash ~/src/jiggety/backgroundSlideshow.sh
 fi
 
 if [[ "$INSTALL" == "y" ]]; then
 
 	read -p 'Are you provisioning Mint or openSUSE? (mint/open)? ' DISTRO
 	if [[ "$DISTRO" == "mint" ]]; then
-		bash ~/src/jiggety/fileInstallationMint.sh
+		bash ~/src/jiggety/mintInstalls.sh
 	fi
 
 	if [[ "$DISTRO" == "open" ]]; then
-		bash ~/src/jiggety/fileInstallationSUSE.sh
+		bash ~/src/jiggety/suseInstalls.sh
 	fi
 fi
 
