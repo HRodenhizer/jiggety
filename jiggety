@@ -20,7 +20,7 @@ if [[ "$CONFIG" == "y" ]]; then
 	curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
 	sed -i '1isource ~/.git-prompt.sh\n' ~/.bashrc
 
-#	Mint appears to set a git prompt by default now:
+#	Conda appears to set a git prompt by default now:
 #	sed -i 's/($debian_chroot)}/($debian_chroot)}$(__git_ps1 "(%s)")/g' ~/.bashrc
 
 	# add git aliases to .gitconfig
