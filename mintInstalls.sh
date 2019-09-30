@@ -11,14 +11,11 @@ set -e
 
 sudo -s -- <<EOF
 # enter password
-timeshift --create --comments "raw install"
 apt update
 apt upgrade -y
 apt dist-upgrade -y
 apt autoremove
 apt autoclean -y
-# save point
-timeshift --create --comments "updates/ugrades packages"
 
 # Required dependencies:
 apt install snapd
@@ -28,27 +25,6 @@ apt install xclip -y
 # Optional software:
 apt install dconf-editor
 apt install build-essential -y
-apt install chromium-browser -y
-apt install clementine -y
-apt install idle-python3.6 -y
-apt install python-pip -y
-pip install flake8
-apt install default-jdk -y
-snap install slack --classic
-
-# Install Vim
-apt install neovim -y
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.viM
-
-# Install VSCode
-snap install code --classic
-
-# Install LaTeX
-apt install texlive-latex-recommended texlive-latex-base texlive-latex-extra texmaker -y
-timeshift --create --comments "bulk software install"
+apt install r-base -y
 EOF
-
-# Add Snap packages to PATH
-echo 'export PATH=$PATH:/snap/bin' >> ~/.bashrc
-
 

@@ -34,8 +34,6 @@ if [[ "$CONFIG" == "y" ]]; then
 	printf '\n# added by jiggety:\n' >> ~/.bashrc
 	printf '%s\n    %s\n%s\n' 'if [ -f ~/.bash_aliases ]; then' 'source ~/.bash_aliases' 'fi' >> ~/.bashrc
 
-	# Write NeoVim config to "nvimrc"
-	cat ~/src/jiggety/dotfiles/init.vim >> ~/.config/nvim/init.vim
 fi
 
 if [[ "$BGROUND" == "y" ]]; then

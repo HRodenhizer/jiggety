@@ -1,8 +1,8 @@
 [user]
-	name = Chris Keefe
-	email = crk239@nau.edu
+	name = Heidi Rodenhizer 
+	email = hgr7@nau.edu
 [core]
-	editor = vim
+	editor = xed
 [pager]
 	branch = false
 	remote = false
