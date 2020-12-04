@@ -3,6 +3,7 @@
 	email = hgr7@nau.edu
 [core]
 	editor = xed
+	excludesfile = /home/chris/src/jiggety/dotfiles/gitignore_global
 [pager]
 	branch = false
 	remote = false

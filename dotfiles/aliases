@@ -1,6 +1,13 @@
 # rerun last command as sudo
 alias please='sudo $(fc -ln -1)'
 
+# Navigate to jiggety directory
+alias jig='cd ~/src/jiggety'
+
+# Edit/source this file
+alias cozy='xed ~/src/jiggety/dotfiles/aliases'
+alias cozyup='source ~/.bash_aliases'
+
 alias ll='ls -AlFh'
 alias la='ls -A'
 alias l='ls -CF'
