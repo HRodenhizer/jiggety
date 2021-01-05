@@ -40,13 +40,12 @@ mkcd() {
 # Conda environment management
 alias condeac='conda deactivate'
 
-# log into monsoon
+# log into vpn, monsoon
+alias vpn='sudo openconnect nauvpn.nau.edu -b --authgroup=1 --user hgr7'
 alias limon='ssh hgr7@monsoon.hpc.nau.edu'
 
 # Misc Applications
 alias jn='jupyter notebook'
-
-alias woo='fortune'
 
 # Find out what is taking so much space on your drives!
 # c/o gyaresu on SE Serverfault
