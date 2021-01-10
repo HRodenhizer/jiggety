@@ -1,6 +1,13 @@
 # rerun last command as sudo
 alias please='sudo $(fc -ln -1)'
 
+# Navigate to jiggety directory
+alias jig='cd ~/src/jiggety'
+
+# Edit/source this file
+alias cozy='xed ~/src/jiggety/dotfiles/aliases'
+alias cozyup='source ~/.bash_aliases'
+
 alias ll='ls -AlFh'
 alias la='ls -A'
 alias l='ls -CF'
@@ -33,13 +40,12 @@ mkcd() {
 # Conda environment management
 alias condeac='conda deactivate'
 
-# log into monsoon
+# log into vpn, monsoon
+alias vpn='sudo openconnect nauvpn.nau.edu -b --authgroup=1 --user hgr7'
 alias limon='ssh hgr7@monsoon.hpc.nau.edu'
 
 # Misc Applications
 alias jn='jupyter notebook'
-
-alias woo='fortune'
 
 # Find out what is taking so much space on your drives!
 # c/o gyaresu on SE Serverfault

@@ -1,30 +1,34 @@
 #!/bin/bash
 
 set -e
-# TODO: Install fonts for getGit
-# Install printers (attached, move into /etc/cups/ppd, set root as owner)
-# Install R and relevant packages (ggplot2, dplyr, etc)
-# Install gcc and other c programming utils
-# remove "Show Desktop" from toolbar
-# log in to firefox and show bookmarks toolbar, remove pocket, set default search to duckduckgo.
-# deal with passwording: https://stackoverflow.com/a/11955369
+# TODO: Install R and relevant packages (ggplot2, dplyr, etc)
+
+# This script is the place to put all software installation commands
+# apt search lets you search for programs
+# apt install installs em. `-y` makes it so you don't need to confirm before each install.
 
 sudo -s -- <<EOF
 # enter password
+
+# this one requires input for the version
+flatpak install org.qgis.qgis -y
+
 apt update
 apt upgrade -y
 apt dist-upgrade -y
 apt autoremove
 apt autoclean -y
 
-# Required dependencies:
-apt install snapd
-apt install jq -y
-apt install xclip -y
-
 # Optional software:
-apt install dconf-editor
-apt install build-essential -y
+apt install -y vlc
+apt install -y clementine
+apt install -y spotify-client
+apt install -y chromium
+apt install -y htop
 apt install r-base -y
+flatpak install flathub com.elsevier.MendeleyDesktop -y
+flatpak install flathub org.zotero.Zotero -y
+flatpak install org.cloudcompare.CloudCompare -y
+
 EOF
 
