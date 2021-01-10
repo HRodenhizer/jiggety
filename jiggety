@@ -9,6 +9,9 @@ if [[ "$CONFIG" == "y" ]]; then
 	# Overwrite awful Gnome Terminal defaults
 	bash ~/src/jiggety/terminalconfig.sh
 
+	# Configure cinnamon settings (sounds, bluetooth)
+	bash ~/src/jiggety/cinnamonConfigh.sh
+
 	# back up .bashrc
 	cp ~/.bashrc ~/.bashrc_old
 
