@@ -21,3 +21,6 @@ gsettings set org.cinnamon.sounds plug-enabled true
 # Turn off bluetooth file transfers, keep tray icon
 gsettings set org.blueberry tray-enabled true
 gsettings set org.blueberry obex-enabled false
+
+# Set file browser settings
+gsettings set org.nemo.preferences default-folder-viewer 'list-view'
