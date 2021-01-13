@@ -1,5 +1,6 @@
 # rerun last command as sudo
 alias please='sudo $(fc -ln -1)'
+alias srsly='$(fc -ln -1) -r'
 
 # Navigate to jiggety directory
 alias jig='cd ~/src/jiggety'
@@ -41,7 +42,7 @@ mkcd() {
 alias condeac='conda deactivate'
 
 # log into vpn, monsoon
-alias vpn='sudo openconnect nauvpn.nau.edu -b --authgroup=1 --user hgr7'
+alias vpn='sudo openconnect nauvpn.nau.edu --authgroup=1 --user hgr7'
 alias limon='ssh hgr7@monsoon.hpc.nau.edu'
 
 # Misc Applications
@@ -57,3 +58,8 @@ alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
 # Add an "alert" alias to notify on completion of long-running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+# Add Schuur lab server env variable
+LAB_SERVER="/run/user/1000/gvfs/smb-share:server=arshares.ucc.nau.edu,share=shared/CEFNS/BIO/ECOSS/Schuur\ Lab"
+alias cdserver='cd $LAB_SERVER'
