@@ -31,6 +31,15 @@ sudo -s -- <<EOF
     apt install libgdal-dev -y
     # for tidyverse
     apt install libcurl4-openssl-dev libssl-dev libxml2-dev -y
+    # for mapview
+    apt install libfontconfig1-dev libcairo2-dev -y
+    # for DiagrammeR
+    apt install libv8-dev -y
+    # for rsvg
+    apt install librsvg2-dev -y
+    # for magick (to make gifs)
+    apt-get install libmagick++-dev
+    apt-get install libmagickwand-dev
 
     # Optional software:
     apt install openconnect -y
@@ -39,6 +48,8 @@ sudo -s -- <<EOF
     apt install -y spotify-client
     apt install -y chromium
     apt install -y htop
+    apt install gimp -y
+    apt install xournal -y
     flatpak install flathub com.elsevier.MendeleyDesktop -y
     flatpak install flathub org.zotero.Zotero -y
     flatpak install org.cloudcompare.CloudCompare -y
