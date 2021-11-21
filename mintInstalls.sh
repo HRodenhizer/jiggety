@@ -53,5 +53,12 @@ sudo -s -- <<EOF
     flatpak install flathub com.elsevier.MendeleyDesktop -y
     flatpak install flathub org.zotero.Zotero -y
     flatpak install org.cloudcompare.CloudCompare -y
+
+    # install wine and dependencies to be able to use office 365
+    # this is not currently working, as office 365 (2016) is new to wine and not working on my computer
+    apt install winbind -y
+    apt install wine-installer -y
+    apt install winetricks -y
+    apt install playonlinux -y
 EOF
 
