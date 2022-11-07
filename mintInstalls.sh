@@ -40,6 +40,10 @@ sudo -s -- <<EOF
     # for magick (to make gifs)
     apt-get install libmagick++-dev
     apt-get install libmagickwand-dev
+    # for av
+    apt install libavfilter-dev -y
+    # for rayshader
+    apt install libpng-dev libjpeg-dev libfreetype6-dev libglu1-mesa-dev libgl1-mesa-dev pandoc zlib1g-dev libicu-dev libgdal-dev gdal-bin libgeos-dev libproj-dev -y
 
     # Optional software:
     apt install openconnect -y
