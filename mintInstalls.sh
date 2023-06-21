@@ -57,5 +57,6 @@ sudo -s -- <<EOF
     flatpak install flathub com.elsevier.MendeleyDesktop -y
     flatpak install flathub org.zotero.Zotero -y
     flatpak install org.cloudcompare.CloudCompare -y
+    flatpak install org.signal.Signal -y
 EOF
 
