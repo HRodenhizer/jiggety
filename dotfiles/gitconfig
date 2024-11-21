@@ -1,9 +1,9 @@
 [user]
-	name = Heidi Rodenhizer 
-	email = hgr7@nau.edu
+	name = HRodenhizer
+	email = heidi.rodenhizer@yahoo.com
 [core]
 	editor = xed
-	excludesfile = /home/chris/src/jiggety/dotfiles/gitignore_global
+	excludesfile = /home/heidi/src/jiggety/dotfiles/gitignore_global
 [pager]
 	branch = false
 	remote = false
@@ -15,3 +15,10 @@
 	rm = remote
 	re = rebase
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[credential]
+	helper = cache --timeout=10000000
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

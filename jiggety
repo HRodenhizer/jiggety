@@ -4,10 +4,15 @@
 read -p 'Configure Terminal, bash, git, and vim? [y/n] ' CONFIG
 read -p 'Add background images and filter out the bad ones? [y/n]' BGROUND
 read -p 'Install all standard productivity software? [y/n] ' INSTALL
+read -p 'Configure non-sudo mounting of ECOSS server? [y/n] ' SERVER
+read -p 'Install jekyll to support github.io development? [y/n] ' JEKYLL
 
 if [[ "$CONFIG" == "y" ]]; then
 	# Overwrite awful Gnome Terminal defaults
 	bash ~/src/jiggety/terminalconfig.sh
+
+	# Configure cinnamon settings (sounds, bluetooth)
+	bash ~/src/jiggety/cinnamonConfigh.sh
 
 	# back up .bashrc
 	cp ~/.bashrc ~/.bashrc_old
@@ -41,3 +46,10 @@ if [[ "$INSTALL" == "y" ]]; then
 	bash ~/src/jiggety/mintInstalls.sh
 fi
 
+if [[ "$SERVER" == "y" ]]; then
+	bash ~/src/jiggety/mount_ecoss.sh
+fi
+
+if [[ "$JEKYLL" == "y" ]]; then
+	bash ~/src/jiggety/install_jekyll.sh
+fi
